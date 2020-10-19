@@ -1,3 +1,4 @@
-/toolchain
+/toolchain/*
+!/toolchain/install.sh
 *.o
 *.elf
