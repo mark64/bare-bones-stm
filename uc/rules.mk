@@ -3,7 +3,7 @@ LOCAL_DIR := $(GET_LOCAL_DIR)
 MODULE := $(LOCAL_DIR)
 
 MODULE_SRCS := \
-	$(LOCAL_DIR)/dummy.c
+	$(LOCAL_DIR)/main.cc
 
 flash: $(OUTELF)
 	openocd $(OPENOCD_FLAGS) -c 'program $(OUTELF) reset exit'

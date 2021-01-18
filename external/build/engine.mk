@@ -55,7 +55,7 @@ OUTBIN := $(BUILDDIR)/lk.bin
 OUTELF := $(BUILDDIR)/lk.elf
 CONFIGHEADER := $(BUILDDIR)/config.h
 
-GLOBAL_INCLUDES := $(BUILDDIR) $(addsuffix /include,$(LKINC))
+GLOBAL_INCLUDES := $(BUILDDIR) $(LKINC)
 GLOBAL_OPTFLAGS ?= $(ARCH_OPTFLAGS)
 # TODO(mark): get -Os working
 GLOBAL_COMPILEFLAGS := -include $(CONFIGHEADER)

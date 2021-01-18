@@ -1,10 +1,9 @@
-#include "code/app.h"
-#include "code/target.h"
-#include "code/platform.h"
+#include "uc/app/app.h"
+#include "uc/target/target.h"
+#include "uc/platform/platform.h"
 
-void code_main(void) {
-    astros::platform::Init();
-    astros::target::Init();
-    astros::app:Main();
-    panic("Should never reach this point.");
+int main(void) {
+    uc::platform::Init();
+    uc::target::Init();
+    uc::app::Main();
 }

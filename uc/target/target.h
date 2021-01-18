@@ -1,9 +1,9 @@
-#include "uc/target/target.h"
+#pragma once
 
 namespace uc {
 namespace target {
 
-void Init() {}
+void Init();
 
 } // namespace target
 } // namespace uc
