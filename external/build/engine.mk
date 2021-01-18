@@ -138,15 +138,15 @@ BUILDID ?=
 NOECHO ?= @
 
 # try to include the project file
--include code/project/$(PROJECT).mk
+-include uc/project/$(PROJECT).mk
 ifndef TARGET
 $(error couldn't find project or project doesn't define target)
 endif
-include code/target/$(TARGET)/rules.mk
+include uc/target/$(TARGET)/rules.mk
 ifndef PLATFORM
 $(error couldn't find target or target doesn't define platform)
 endif
-include code/platform/$(PLATFORM)/rules.mk
+include uc/platform/$(PLATFORM)/rules.mk
 
 ifndef ARCH
 $(error couldn't find arch or platform doesn't define arch)
@@ -163,7 +163,7 @@ $(info ARCH = $(ARCH))
 $(info TOOLCHAIN_PREFIX = $(TOOLCHAIN_PREFIX))
 
 # include the top level module that includes basic always-there modules
-include code/rules.mk
+include uc/rules.mk
 
 # recursively include any modules in the MODULE variable, leaving a trail of included
 # modules in the ALLMODULES list

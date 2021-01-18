@@ -21,8 +21,8 @@ LKINC += $(LKROOT)/external
 else
 LKINC += external
 endif
-# add the code path to LKINC
-LKINC += code
+# add the code uc path to LKINC
+LKINC += uc
 
 export LKMAKEROOT
 export LKROOT
