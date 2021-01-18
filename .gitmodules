@@ -1,3 +1,3 @@
-[submodule "external/STM32CubeL4"]
-	path = external/STM32CubeL4
+[submodule "external/stm32cubel4/repo"]
+	path = external/stm32cubel4/repo
 	url = https://github.com/STMicroelectronics/STM32CubeL4

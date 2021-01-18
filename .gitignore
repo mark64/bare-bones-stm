@@ -2,3 +2,4 @@
 !/toolchain/install.sh
 *.o
 *.elf
+_build-*
