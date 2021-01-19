@@ -242,6 +242,9 @@ GLOBAL_DEFINES += ARCH_ASMFLAGS=\"$(subst $(SPACE),_,$(ARCH_ASMFLAGS))\"
 GLOBAL_DEFINES += ARCH_LDFLAGS=\"$(subst $(SPACE),_,$(ARCH_LDFLAGS))\"
 GLOBAL_DEFINES += TOOLCHAIN_PREFIX=\"$(subst $(SPACE),_,$(TOOLCHAIN_PREFIX))\"
 
+# Defines that should not be upper-cased.
+GLOBAL_NO_EDIT_DEFINES ?=
+
 ifneq ($(OBJS),)
 $(warning OBJS=$(OBJS))
 $(error OBJS is not empty, please convert to new module format)
@@ -273,7 +276,7 @@ clean: $(EXTRA_CLEANDEPS)
 configheader:
 
 $(CONFIGHEADER): configheader
-	@$(call MAKECONFIGHEADER,$@,GLOBAL_DEFINES)
+	@$(call MAKECONFIGHEADER,$@,GLOBAL_DEFINES,GLOBAL_NO_EDIT_DEFINES)
 
 # Empty rule for the .d files. The above rules will build .d files as a side
 # effect. Only works on gcc 3.x and above, however.

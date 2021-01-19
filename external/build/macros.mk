@@ -38,7 +38,9 @@ endef
 MAKECVAR=$(subst C++,CPP,$(subst -,_,$(subst /,_,$(subst .,_,$1))))
 
 # generate a header file at $1 with an expanded variable in $2
-# $3 provides an (optional) raw footer to append to the end
+# $3 provide an (optional) set of expanded variables which should
+# not be uppercased.
+# $4 provides an (optional) raw footer to append to the end
 # NOTE: the left side of the variable will be upper cased and some symbols replaced
 # to be valid C names (see MAKECVAR above).
 # The right side of the #define can be any valid C but cannot contain spaces, even
@@ -52,6 +54,11 @@ define MAKECONFIGHEADER
 		$(firstword $(subst =,$(SPACE),$(call MAKECVAR,$(call UC,$(var))))) \
 		$(if $(findstring =,$(var)),$(subst $(firstword $(subst =,$(SPACE),$(var)))=,,$(var))) \
 		>> $1.tmp;) \
-	echo $3 >> $1.tmp; \
+	$(foreach var,$($(3)), \
+		echo \#define \
+		$(firstword $(subst =,$(SPACE),$(call MAKECVAR,$(var)))) \
+		$(if $(findstring =,$(var)),$(subst $(firstword $(subst =,$(SPACE),$(var)))=,,$(var))) \
+		>> $1.tmp;) \
+	echo $4 >> $1.tmp; \
 	$(call TESTANDREPLACEFILE,$1.tmp,$1)
 endef
