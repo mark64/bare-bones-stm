@@ -10,6 +10,8 @@ MODULE_DEPS += \
 
 LINKER_SCRIPT := $(LOCAL_DIR)/sections.ld
 
+GLOBAL_INCLUDES += $(LOCAL_DIR)/external_inc
+
 ARCH := arm
 ARM_CPU := cortex-m4
 

@@ -7,6 +7,7 @@ MODULE_SRCS := \
 
 GLOBAL_INCLUDES += \
 	$(LOCAL_DIR)/repo/Drivers/CMSIS/ \
+	$(LOCAL_DIR)/repo/Drivers/CMSIS/Device/ST/STM32L4xx/Include \
 	$(LOCAL_DIR)/repo/Drivers/CMSIS/Include \
 	$(LOCAL_DIR)/repo/Drivers/STM32L4xx_HAL_Driver/Inc
 

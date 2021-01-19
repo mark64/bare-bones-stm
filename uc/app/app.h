@@ -1,7 +1,7 @@
 #pragma once
 
-namespace uc{
-namespace app{
+namespace uc {
+namespace app {
 
 void Main();
 

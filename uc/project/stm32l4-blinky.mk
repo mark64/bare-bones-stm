@@ -2,4 +2,4 @@
 
 MODULE_DEPS+=uc/app/blinky
 
-TARGET := nucleo32l4kc
+TARGET := stm32l476-discovery
