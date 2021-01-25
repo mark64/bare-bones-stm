@@ -1,8 +1,8 @@
 #include <cstdint>
+#include "stm32l4xx_hal.h"
 #include "uc/platform/platform.h"
 
 extern "C"{
-#include "stm32l4xx_hal.h"
     // From
     // https://github.com/STMicroelectronics/STM32CubeL4/blob/master/Projects/32L476GDISCOVERY/Examples/GPIO/GPIO_IOToggle/Src/system_stm32l4xx.c
     uint32_t SystemCoreClock = 4000000;

@@ -3,12 +3,8 @@
 //#include "Device/ST/STM32L4xx/Include/stm32l432xx.h"
 
 
-extern "C" {
-#include <stdint.h>
 #include "stm32l4xx_hal.h"
-#include "stm32l4xx_hal_cortex.h"
-#include "stm32l4xx_hal_rcc.h"
-}
+//#include "stm32l4xx_hal_rcc.h"
 
 #include "uc/app/app.h"
 #include "uc/hal/gpio.h"
