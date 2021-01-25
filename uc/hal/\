@@ -13,9 +13,9 @@ class Gpio {
     }GpioPinStruct;
     // Gpio Functions
     static void Init();
-    static void SetMode(GpioPinStruct* gpio_pin);
-    static void Set(GpioPinStruct* gpio_pin, GPIO_PinState pin_state);
-    static void Get(GpioPinStruct* gpio_pin);
+    static void SetMode(GpioPinStruct* pin);
+    static void Set(GpioPinStruct* pin, GPIO_PinState pin_state);
+    static void Get(GpioPinStruct* pin);
 };
 
 } // namespace uc

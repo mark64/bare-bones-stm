@@ -26,7 +26,7 @@ void Gpio::SetMode(uc::hal::Gpio::GpioPinStruct* gpio_pin) {
 }
 
 void Gpio::Set(uc::hal::Gpio::GpioPinStruct* gpio_pin, GPIO_PinState pin_state) {
-    uint16_t pin_num = gpio_pin->pin->Pin;
+    uint16_t pin_num = gpio_pin->pin->Pin
     HAL_GPIO_WritePin(gpio_pin->port, pin_num, pin_state);
 }
 
