@@ -5,7 +5,7 @@ MODULE := $(LOCAL_DIR)
 MODULE_SRCS := \
 	$(LOCAL_DIR)/main.cc
 
-flash: $(OUTELF)
+flash: all
 	openocd $(OPENOCD_FLAGS) -c 'program $(OUTELF) reset exit'
 
 .PHONY: flash
