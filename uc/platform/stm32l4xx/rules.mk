@@ -6,7 +6,8 @@ MODULE_SRCS := \
 	$(LOCAL_DIR)/gpio.cc \
 	$(LOCAL_DIR)/hal_defines.c \
 	$(LOCAL_DIR)/interrupts.c \
-	$(LOCAL_DIR)/platform.cc
+	$(LOCAL_DIR)/platform.cc \
+	$(LOCAL_DIR)/sleep.cc
 
 MODULE_DEPS += \
 	external/stm32cubel4

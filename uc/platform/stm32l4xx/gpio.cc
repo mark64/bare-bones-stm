@@ -8,6 +8,37 @@ extern "C" {
 namespace uc {
 namespace hal {
 
+namespace {
+
+GPIO_TypeDef* _GetPinPort(uint16_t pin_num){
+    // XXX TODO (hj) map these correctly
+    return GPIOA;
+}
+
+uint16_t _GetPinNum(uint16_t pin_num) {
+    // XXX TODO (hj) map these correctly
+    return GPIO_PIN_5;
+}
+
+GPIO_InitTypeDef _GetPinDef(uint16_t pin_num, Gpio::PinType pin_mode) {
+    // XXX TODO (hj) make these other pin options avaliable
+    // Right now, only OUTPUT and INPUT is available 
+    GPIO_InitTypeDef gpio_pin;
+    gpio_pin.Pull = GPIO_PULLUP;
+    gpio_pin.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+    gpio_pin.Pin = _GetPinNum(pin_num);
+    switch(pin_mode) {
+        case Gpio::OUTPUT:
+            gpio_pin.Mode = GPIO_MODE_OUTPUT_PP;
+            break;
+         default:
+	    gpio_pin.Mode = GPIO_MODE_INPUT;
+    }
+    return gpio_pin;
+}
+
+}
+
 void Gpio::Init() {
     // Init CLK to all GPIO banks
     __HAL_RCC_GPIOA_CLK_ENABLE();
@@ -38,33 +69,6 @@ void Gpio::Set(uint16_t pin_num, uint8_t pin_state) {
 	 gpio_pin_state = GPIO_PIN_SET;
     // Write the pin state through HAL
     HAL_GPIO_WritePin(port, port_pin_num, gpio_pin_state);
-}
-
-GPIO_TypeDef* Gpio::_GetPinPort(uint16_t pin_num){
-    // XXX TODO (hj) map these correctly
-    return GPIOA;
-}
-
-uint16_t Gpio::_GetPinNum(uint16_t pin_num) {
-    // XXX TODO (hj) map these correctly
-    return GPIO_PIN_5;
-}
-
-GPIO_InitTypeDef Gpio::_GetPinDef(uint16_t pin_num, Gpio::PinType pin_mode) {
-    // XXX TODO (hj) make these other pin options avaliable
-    // Right now, only OUTPUT and INPUT is available 
-    GPIO_InitTypeDef gpio_pin;
-    gpio_pin.Pull = GPIO_PULLUP;
-    gpio_pin.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
-    gpio_pin.Pin = _GetPinNum(pin_num);
-    switch(pin_mode) {
-        case Gpio::OUTPUT:
-            gpio_pin.Mode = GPIO_MODE_OUTPUT_PP;
-            break;
-         default:
-	    gpio_pin.Mode = GPIO_MODE_INPUT;
-    }
-    return gpio_pin;
 }
 
 } // namespace hal

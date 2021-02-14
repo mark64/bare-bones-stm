@@ -196,6 +196,20 @@ GLOBAL_DEFINES += $(EXTERNAL_DEFINES)
 $(info EXTERNAL_DEFINES = $(EXTERNAL_DEFINES))
 endif
 
+# add target_specific includes
+TARGET_SPECIFIC_INCLUDE := $(BUILDDIR)/uc/target_specific
+
+$(TARGET_SPECIFIC_INCLUDE):
+	ln -sf $(shell realpath $(LKROOT)/uc/target/$(TARGET)/target_specific) $(TARGET_SPECIFIC_INCLUDE)
+
+# add target_specific includes
+PLATFORM_SPECIFIC_INCLUDE := $(BUILDDIR)/uc/platform_specific
+
+$(PLATFORM_SPECIFIC_INCLUDE):
+	ln -sf $(shell realpath $(LKROOT)/uc/platform/$(PLATFORM)/platform_specific) $(PLATFORM_SPECIFIC_INCLUDE)
+
+GLOBAL_SRCDEPS += $(TARGET_SPECIFIC_INCLUDE) \
+		  $(PLATFORM_SPECIFIC_INCLUDE)
 
 # prefix all of the paths in GLOBAL_INCLUDES with -I
 GLOBAL_INCLUDES := $(addprefix -I,$(GLOBAL_INCLUDES))
