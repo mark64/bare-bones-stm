@@ -6,7 +6,7 @@
 #include "uc/hal/sleep.h"
 #include "uc/target_specific/pins.h"
 
-std::chrono::milliseconds delay_ms{1000};
+std::chrono::milliseconds delay_ms{499};
 
 void uc::app::Main(void) {
     uint16_t led_pin = uc::target_specific::kLedPin;
