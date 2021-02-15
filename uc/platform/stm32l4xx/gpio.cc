@@ -11,13 +11,34 @@ namespace hal {
 namespace {
 
 GPIO_TypeDef* _GetPinPort(uint16_t pin_num){
-    // XXX TODO (hj) map these correctly
-    return GPIOA;
+    GPIO_TypeDef* port_list[] = {GPIOA, GPIOB, GPIOC, GPIOD, GPIOE, GPIOF};
+
+    uint8_t port_idx = pin_num / 16;
+    GPIO_TypeDef* port = port_list[port_idx];
+
+    return port;
 }
 
 uint16_t _GetPinNum(uint16_t pin_num) {
-    // XXX TODO (hj) map these correctly
-    return GPIO_PIN_5;
+    uint16_t pin_list[] = {GPIO_PIN_0,
+	                   GPIO_PIN_1,
+			   GPIO_PIN_2,
+			   GPIO_PIN_3,
+			   GPIO_PIN_4,
+			   GPIO_PIN_5,
+			   GPIO_PIN_6,
+			   GPIO_PIN_7,
+			   GPIO_PIN_8,
+			   GPIO_PIN_9,
+			   GPIO_PIN_10,
+			   GPIO_PIN_11,
+			   GPIO_PIN_12,
+			   GPIO_PIN_13,
+			   GPIO_PIN_14,
+			   GPIO_PIN_15};
+    uint8_t pin_idx = pin_num % 16;
+    uint16_t port_pin_num = pin_list[pin_idx];
+    return port_pin_num;
 }
 
 GPIO_InitTypeDef _GetPinDef(uint16_t pin_num, Gpio::PinType pin_mode) {
