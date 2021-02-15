@@ -6,10 +6,9 @@
 #include "uc/hal/sleep.h"
 #include "uc/target_specific/pins.h"
 
-std::chrono::milliseconds delay_ms{500};
+std::chrono::milliseconds delay_ms{1000};
 
 void uc::app::Main(void) {
-    //uint16_t led_pin = PA5;
     uint16_t led_pin = uc::target_specific::kLedPin;
     uc::hal::Gpio::SetMode(led_pin, uc::hal::Gpio::OUTPUT);
 

@@ -8,6 +8,9 @@ MODULE_SRCS := \
 flash: all
 	openocd $(OPENOCD_FLAGS) -c 'program $(OUTELF) reset exit'
 
+demo: all
+	openocd $(OPENOCD_FLAGS) -c 'program $(OUTELF).hex reset exit'
+
 .PHONY: flash
 
 include $(MAKEDIR)/module.mk

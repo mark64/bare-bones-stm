@@ -2,7 +2,7 @@
 
 namespace uc {
 namespace platform {
-namespace stm32l4xx {
+namespace stm32f3xx {
 
 // Port A
 static constexpr uint16_t PA0 = 0;
@@ -112,42 +112,6 @@ static constexpr uint16_t PF13 = 93;
 static constexpr uint16_t PF14 = 94;
 static constexpr uint16_t PF15 = 95;
 
-// Port G
-static constexpr uint16_t PG0 = 96;
-static constexpr uint16_t PG1 = 97;
-static constexpr uint16_t PG2 = 98;
-static constexpr uint16_t PG3 = 99;
-static constexpr uint16_t PG4 = 100;
-static constexpr uint16_t PG5 = 101;
-static constexpr uint16_t PG6 = 102;
-static constexpr uint16_t PG7 = 103;
-static constexpr uint16_t PG8 = 104;
-static constexpr uint16_t PG9 = 105;
-static constexpr uint16_t PG10 = 106;
-static constexpr uint16_t PG11 = 107;
-static constexpr uint16_t PG12 = 108;
-static constexpr uint16_t PG13 = 109;
-static constexpr uint16_t PG14 = 110;
-static constexpr uint16_t PG15 = 111;
-
-// Port H
-static constexpr uint16_t PH0 = 112;
-static constexpr uint16_t PH1 = 113;
-static constexpr uint16_t PH2 = 114;
-static constexpr uint16_t PH3 = 115;
-static constexpr uint16_t PH4 = 116;
-static constexpr uint16_t PH5 = 117;
-static constexpr uint16_t PH6 = 118;
-static constexpr uint16_t PH7 = 119;
-static constexpr uint16_t PH8 = 120;
-static constexpr uint16_t PH9 = 121;
-static constexpr uint16_t PH10 = 122;
-static constexpr uint16_t PH11 = 123;
-static constexpr uint16_t PH12 = 124;
-static constexpr uint16_t PH13 = 125;
-static constexpr uint16_t PH14 = 126;
-static constexpr uint16_t PH15 = 127;
-
-} // stm32l4xx
+} // stm32f3xx
 } // platform
 } // uc
