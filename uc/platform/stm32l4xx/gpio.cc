@@ -14,6 +14,8 @@ GPIO_TypeDef* _GetPinPort(uint16_t pin_num){
     GPIO_TypeDef* port_list[] = {GPIOA, GPIOB, GPIOC, GPIOD, GPIOE, GPIOF};
 
     uint8_t port_idx = pin_num / 16;
+    // Check that port_idx isn't accessing invalid memory
+    if (port_idx >= sizeof(port_list) / sizeof(port_list[0])) return nullptr;
     GPIO_TypeDef* port = port_list[port_idx];
 
     return port;
@@ -36,7 +38,7 @@ uint16_t _GetPinNum(uint16_t pin_num) {
 			   GPIO_PIN_13,
 			   GPIO_PIN_14,
 			   GPIO_PIN_15};
-    uint8_t pin_idx = pin_num % 16;
+    uint8_t pin_idx = pin_num % (sizeof(pin_list) / sizeof(pin_list[0]));
     uint16_t port_pin_num = pin_list[pin_idx];
     return port_pin_num;
 }
@@ -75,6 +77,7 @@ void Gpio::Init() {
 void Gpio::SetMode(uint16_t pin_num, uc::hal::Gpio::PinType pin_mode) {
     // Get the pin's port, mode, speed, and pin number
     GPIO_TypeDef* port = _GetPinPort(pin_num);
+    if (!port) return false;
     GPIO_InitTypeDef gpio_pin = _GetPinDef(pin_num, pin_mode);
     // Init the pin through HAL
     HAL_GPIO_Init(port, &gpio_pin);
@@ -83,6 +86,7 @@ void Gpio::SetMode(uint16_t pin_num, uc::hal::Gpio::PinType pin_mode) {
 void Gpio::Set(uint16_t pin_num, uint8_t pin_state) {
     // Get the pin port and number
     GPIO_TypeDef* port = _GetPinPort(pin_num);
+    if (!port) return false;
     uint16_t port_pin_num = _GetPinNum(pin_num);
     // Get the pin state
     GPIO_PinState gpio_pin_state = GPIO_PIN_RESET;
